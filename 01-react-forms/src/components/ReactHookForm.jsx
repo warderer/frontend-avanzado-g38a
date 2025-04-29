@@ -42,7 +42,7 @@ const ReactHookForm = () => {
             id='firstName'
             {...register('firstName')}
           />
-          <p>{errors.firstName?.message}</p>
+          <span>{errors.firstName?.message}</span>
 
           <label htmlFor='lastName'>Apellido</label>
           <input
@@ -52,7 +52,7 @@ const ReactHookForm = () => {
             id='lastName'
             {...register('lastName')}
           />
-          <p>{errors.lastName?.message}</p>
+          <span>{errors.lastName?.message}</span>
 
           <label htmlFor='age'>Edad</label>
           <input
@@ -62,7 +62,7 @@ const ReactHookForm = () => {
             id='age'
             {...register('age')}
           />
-         <p>{errors.age?.message}</p>
+         <span>{errors.age?.message}</span>
 
           <label htmlFor='gender'>Genero</label>
           <select name='gender' id='gender' {...register('gender')}>
@@ -71,7 +71,7 @@ const ReactHookForm = () => {
             <option value='F'>Femenino</option>
             <option value='O'>Otro</option>
           </select>
-          <p>{errors.gender?.message}</p>
+          <span>{errors.gender?.message}</span>
 
           <label htmlFor='email'>Email</label>
           <input
@@ -81,7 +81,7 @@ const ReactHookForm = () => {
             id='email'
             {...register('email')}
           />
-          <p>{errors.email?.message}</p>
+          <span>{errors.email?.message}</span>
 
           <label htmlFor='password'>Password</label>
           <input
@@ -90,7 +90,7 @@ const ReactHookForm = () => {
             id='password'
             {...register('password')}
           />
-          <p>{errors.password?.message}</p>
+          <span>{errors.password?.message}</span>
 
           <button type='submit'>
             Iniciar Sesion
