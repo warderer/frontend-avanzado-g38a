@@ -21,8 +21,9 @@ const ReactHookForm = () => {
             name='firstName'
             placeholder='Tu Nombre'
             id='firstName'
-            {...register('firstName')}
+            {...register('firstName', { required: true })}
           />
+          {errors.firstName && <span>This field is required</span>}
 
           <label htmlFor='lastName'>Apellido</label>
           <input
@@ -30,8 +31,9 @@ const ReactHookForm = () => {
             name='lastName'
             placeholder='Tu Apellido'
             id='lastName'
-            {...register('lastName')}
+            {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
           />
+          {errors.lastName && <span>This field requires only characters</span>}
 
           <label htmlFor='age'>Edad</label>
           <input
