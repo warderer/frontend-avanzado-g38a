@@ -16,6 +16,7 @@ const SongContext = createContext()
 function SongProvider ({ children }) {
   const [songs, setSongs] = useState([])
   const [loading, setLoading] = useState(true)
+  const [selectedSong, setSelectedSong] = useState({})
 
   // Simulo una llamada a una API
   useEffect(() => {
@@ -27,7 +28,9 @@ function SongProvider ({ children }) {
 
   const data = {
     songs,
-    loading
+    loading,
+    selectedSong,
+    setSelectedSong
   }
 
   return (
