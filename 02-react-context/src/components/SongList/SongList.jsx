@@ -1,18 +1,8 @@
-import { useState, useEffect } from 'react'
-import canciones from '@/assets/listaCanciones.json'
+import { useSongContext } from '@/hooks/useSongContext'
 import './songlist.css'
 
 const SongList = () => {
-  const [songs, setSongs] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  // Simulo una llamada a una API
-  useEffect(() => {
-    setTimeout(() => {
-      setSongs(canciones)
-      setLoading(false)
-    }, 2000)
-  }, [])
+  const { songs, loading } = useSongContext()
 
   return (
     <section className='row-cointainer'>
