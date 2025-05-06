@@ -30,5 +30,9 @@ $menu-color: #3d3d3d;
         &:hover {
             border-bottom: solid 2px $menu-color
         }
+
+        &--is-active {
+            color: #000;
+        }
     }
 }
