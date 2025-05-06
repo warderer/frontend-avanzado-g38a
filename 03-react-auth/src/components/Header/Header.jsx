@@ -1,23 +1,23 @@
 const Header = () => {
   return (
-    <nav className=''>
-      <a href='/' className=''>LOGO</a>
+    <nav className='header'>
+      <a href='/' className='header__logo'>LOGO</a>
 
-      <ul className=''>
-        <li className=''>
-          <a href='/' className=''>Home</a>
+      <ul className='header__nav-list'>
+        <li className='header__list-item'>
+          <a href='/' className='header__item-link header__item-link--is-active'>Home</a>
         </li>
-        <li className=''>
-          <a href='/dashboard' className=''>Dashboard</a>
+        <li className='header__list-item'>
+          <a href='/dashboard' className='header__item-link'>Dashboard</a>
         </li>
-        <li className=''>
-          <a href='/secret' className=''>Secret</a>
+        <li className='header__list-item'>
+          <a href='/secret' className='header__item-link'>Secret</a>
         </li>
-        <li className=''>
-          <a href='/login' className=''>Login</a>
+        <li className='header__list-item'>
+          <a href='/login' className='header__item-link'>Login</a>
         </li>
-        <li className=''>
-          <a href='/signup' className=''>Signup</a>
+        <li className='header__list-item'>
+          <a href='/signup' className='header__item-link'>Signup</a>
         </li>
       </ul>
     </nav>
