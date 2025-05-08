@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { registerUserService } from '@/services/userServices'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const Signup = () => {
   const navigate = useNavigate()
+  const MySwal = withReactContent(Swal)
 
   const {
     register,
@@ -19,6 +22,14 @@ const Signup = () => {
       if (status === 201) {
         // console.log('User registered successfully')
         navigate('/login')
+
+        MySwal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User registered successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } catch (error) {
       console.error('Error registering user:', error)
