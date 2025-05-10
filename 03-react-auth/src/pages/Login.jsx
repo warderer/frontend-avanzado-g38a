@@ -1,10 +1,19 @@
+import { useForm } from 'react-hook-form'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
   return (
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
 
         <img
           className='mb-4'
@@ -22,7 +31,9 @@ const Login = () => {
             className='form-control'
             id='floatingInput'
             placeholder='name@example.com'
+            {...register('email', { required: true })}
           />
+          {errors.email && <span>This field is required</span>}
           <label htmlFor='floatingInput'>Email address</label>
         </div>
 
@@ -32,7 +43,9 @@ const Login = () => {
             className='form-control'
             id='floatingPassword'
             placeholder='Password'
+            {...register('password', { required: true })}
           />
+          {errors.password && <span>This field is required</span>}
           <label htmlFor='floatingPassword'>Password</label>
         </div>
 
