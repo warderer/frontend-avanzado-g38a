@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { loginUserService } from '@/services/userServices'
+import { useAuthContext } from '@/hooks/useAuthContext'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
+  const { login } = useAuthContext()
   const navigate = useNavigate()
   const MySwal = withReactContent(Swal)
 
@@ -21,9 +23,7 @@ const Login = () => {
       const { status, data } = await loginUserService(formData)
       // console.log(data.token)
       if (status === 200) {
-        // Guardamos el token en el localStorage
-        // Este dato permanece aún si el navegador se cierra.
-        localStorage.setItem('token', data.token)
+        login(data.token)
         navigate('/dashboard')
 
         MySwal.fire({
