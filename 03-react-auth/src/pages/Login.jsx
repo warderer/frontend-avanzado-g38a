@@ -16,10 +16,14 @@ const Login = () => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     try {
-      const { status } = await loginUserService(data)
+      const { status, data } = await loginUserService(formData)
+      // console.log(data.token)
       if (status === 200) {
+        // Guardamos el token en el localStorage
+        // Este dato permanece aún si el navegador se cierra.
+        localStorage.setItem('token', data.token)
         navigate('/dashboard')
 
         MySwal.fire({
