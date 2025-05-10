@@ -1,15 +1,46 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { loginUserService } from '@/services/userServices'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
+  const navigate = useNavigate()
+  const MySwal = withReactContent(Swal)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async (data) => {
+    try {
+      const { status } = await loginUserService(data)
+      if (status === 200) {
+        navigate('/dashboard')
+
+        MySwal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    } catch (error) {
+      console.error('Error registering user:', error)
+      MySwal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Login error',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+  }
 
   return (
     <main className='form-signin w-100 m-auto'>
