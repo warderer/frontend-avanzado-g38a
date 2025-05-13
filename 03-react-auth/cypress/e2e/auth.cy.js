@@ -8,4 +8,25 @@ describe('Funcionalidad de Login', () => {
     cy.get('h1')
       .contains('Home')
   })
+
+  it('Probar el login como CUSTOMER', () => {
+    cy.intercept('POST', 'https://ecommerce-json-jwt.onrender.com/login').as('login')
+    // 01. Arrange
+    cy.visit('/login')
+
+    // 02. Act
+    cy.get('input[type=email]')
+      .type('drstrange@marvel.com')
+
+    cy.get('input[type=password]')
+      .type('multiverso')
+
+    cy.get('button[type=submit]')
+      .click()
+
+    cy.wait('@login')
+    // 03. Assert
+    cy.get('h1')
+      .contains('Dashboard')
+  })
 })
