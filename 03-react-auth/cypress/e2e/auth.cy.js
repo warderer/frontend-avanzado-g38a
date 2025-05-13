@@ -15,14 +15,15 @@ describe('Funcionalidad de Login', () => {
     cy.visit('/login')
 
     // 02. Act
-    cy.get('input[type=email]')
-      .type('drstrange@marvel.com')
+    cy.login('drstrange@marvel.com', 'multiverso')
+    // cy.get('input[type=email]')
+    //   .type('drstrange@marvel.com')
 
-    cy.get('input[type=password]')
-      .type('multiverso')
+    // cy.get('input[type=password]')
+    //   .type('multiverso')
 
-    cy.get('button[type=submit]')
-      .click()
+    // cy.get('button[type=submit]')
+    //   .click()
 
     cy.wait('@login')
     // 03. Assert
@@ -36,14 +37,15 @@ describe('Funcionalidad de Login', () => {
     cy.visit('/login')
 
     // 02. Act
-    cy.get('input[type=email]')
-      .type('superman@dc.com')
+    cy.login('superman@dc.com', 'superman')
+    // cy.get('input[type=email]')
+    //   .type('superman@dc.com')
 
-    cy.get('input[type=password]')
-      .type('superman')
+    // cy.get('input[type=password]')
+    //   .type('superman')
 
-    cy.get('button[type=submit]')
-      .click()
+    // cy.get('button[type=submit]')
+    //   .click()
 
     cy.wait('@login')
 
