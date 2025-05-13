@@ -29,4 +29,28 @@ describe('Funcionalidad de Login', () => {
     cy.get('h1')
       .contains('Dashboard')
   })
+
+  it('Probar el login como ADMIN y me debe llevar a Login', () => {
+    cy.intercept('POST', 'https://ecommerce-json-jwt.onrender.com/login').as('login')
+    // 01. Arrange
+    cy.visit('/login')
+
+    // 02. Act
+    cy.get('input[type=email]')
+      .type('superman@dc.com')
+
+    cy.get('input[type=password]')
+      .type('superman')
+
+    cy.get('button[type=submit]')
+      .click()
+
+    cy.wait('@login')
+
+    cy.get('nav > ul li:last')
+      .click()
+    // 03. Assert
+    cy.get('h1')
+      .contains('Please sign in')
+  })
 })
